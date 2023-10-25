@@ -2609,7 +2609,13 @@ export const Formats: FormatList = [
 				(combinationTest.includes('Yeomelt') && combinationTest.includes('Xylyeozop')) ||
 				(combinationTest.includes('Zoplite') && combinationTest.includes('Xylozop')) ||
 				(combinationTest.includes('Zoplite') && combinationTest.includes('Zopyeo')) ||
-				(combinationTest.includes('Zoplite') && combinationTest.includes('Xylyeozop'))) {
+				(combinationTest.includes('Zoplite') && combinationTest.includes('Xylyeozop')) ||
+				(combinationTest.includes('Xylozop') && combinationTest.includes('Xylyeozop')) ||
+				(combinationTest.includes('Yeoxylo') && combinationTest.includes('Xylyeozop')) ||
+				(combinationTest.includes('Zopyeo') && combinationTest.includes('Xylyeozop')) ||
+				(combinationTest.includes('Xylozop') && combinationTest.includes('Yeoxylo')) ||
+				(combinationTest.includes('Yeoxylo') && combinationTest.includes('Zopyeo')) ||
+				(combinationTest.includes('Zopyeo') && combinationTest.includes('Xylozop'))) {
 				return ['You cannot have XYZ Pokemon with their combined forms.'];
 			}
 		},
