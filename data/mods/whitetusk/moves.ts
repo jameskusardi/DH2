@@ -32,28 +32,12 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 			dustproof: true,
 			chance: 100,
 			onHit(target, source) {
-				let statName = 'atk';
-				let bestStat = 0;
-				let s: StatNameExceptHP;
-				for (s in source.storedStats) {
-					if (source.storedStats[s] > bestStat) {
-						statName = s;
-						bestStat = source.storedStats[s];
-					}
-				}
-				let statName1 = 'atk';
-				let bestStat1 = 0;
-				let s1: StatNameExceptHP;
-				for (s1 in target.storedStats) {
-					if (target.storedStats[s] > bestStat1) {
-						statName1 = s1;
-						bestStat1 = target.storedStats[s];
-					}
-				}
-				if (statName === statName1) {
-					this.boost({[statName]: +1}, source);
+				let bestStat = source.getBestStat(false, true);
+				let bestStat1 = target.getBestStat(false, true);
+				if (bestStat === bestStat1) {
+					this.boost({[bestStat]: +1}, source);
 				} else {
-					this.boost({[statName1]: -1}, target, source, null, false, true);
+					this.boost({[bestStat1]: -1}, target, source, null, false, true);
 				}
 			},
 		},
