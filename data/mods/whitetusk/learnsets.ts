@@ -1979,6 +1979,7 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 			substitute: ["9L1"],
 			hyperbeam: ["9L1"],
 			gigaimpact: ["9L1"],
+			surf: ["9L1"],
 		},
 	},
 	doctoxin: {
