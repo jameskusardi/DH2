@@ -177,6 +177,11 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		pp: 10,
 		priority: 0,
 		flags: {snatch: 1, heal: 1, piercing: 1},
+		onModifyMove(move, pokemon, target) {
+			if pokemon.hasAbility('unpoppable') {
+				delete move.flags['piercing'];
+			}
+		},
 		onHit(target) {
 			this.directDamage(target.maxhp/3);
 		},
