@@ -144,17 +144,23 @@ export const Moves: {[moveid: string]: ModdedMoveData} = {
 		accuracy: 100,
 		basePower: 120,
 		category: "Special",
-		shortDesc: "If user is holding Luminous Bubble or Fresh Stick, becomes Water- or Ice-type, respectively.",
+		shortDesc: "If user is holding Luminous Bubble or Fresh Stick, has Water- or Ice-type properties, respectively.",
 		name: "Gatling Gum",
 		pp: 10,
 		priority: 0,
 		flags: {},
 		onModifyType(move, pokemon) {
-			if (pokemon.getItem() === "Luminous Bubble") {
+			if (pokemon.ignoringItem()) return;
+			const item = pokemon.getItem();
+			if (item.id === "Luminous Bubble") {
 				move.type = 'Water';
-			} else if (pokemon.getItem() === "Fresh Stick") {
+			} 
+			else if (item.id === "Fresh Stick") {
 				move.type = 'Ice';
 			}
+		},
+		onEffectiveness(typeMod, target, type, move) {
+			return this.dex.getEffectiveness('Fairy', type);
 		},
 		secondary: null,
 		target: "normal",
